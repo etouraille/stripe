@@ -1,0 +1,6 @@
+{
+    "name": "etouraille/src",
+    "require": {
+        "stripe/stripe-php": "^7.76"
+    }
+}

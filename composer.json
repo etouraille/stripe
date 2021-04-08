@@ -1,0 +1,10 @@
+{
+    "name": "etouraille/stripe",
+    "authors": [
+        {
+            "name": "edouard Touraille",
+            "email": "edouard.touraille@gmail.com"
+        }
+    ],
+    "require": {}
+}
