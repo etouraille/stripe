@@ -14,6 +14,6 @@ $intent = \Stripe\PaymentIntent::create([
     'capture_method'=> 'manual',
 ]);
 
-$_SESSION['intent_id'] = $intent->id;
+@file_put_contents("intent.txt", $intent->id);
 
 echo json_encode(array('client_secret' => $intent->client_secret));
