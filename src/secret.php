@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include 'vendor/autoload.php';
 
@@ -7,10 +8,12 @@ include 'vendor/autoload.php';
 \Stripe\Stripe::setApiKey('sk_test_51IFxhyIeSdECPKMuRXGC7iuMYFp56RYef0N4gDR4LGxDyuln1VK0ZyOEwiLtyhZZ2SoDQijkANNhGJomtc6HTRpt00mglbZvZt');
 
 $intent = \Stripe\PaymentIntent::create([
-    'amount' => 1099,
+    'amount' => 1199,
     'currency' => 'eur',
-    // Verify your integration in this guide by including this parameter
-    'metadata' => ['integration_check' => 'accept_a_payment'],
+    'payment_method_types' => ['card'],
+    'capture_method'=> 'manual',
 ]);
+
+$_SESSION['intent_id'] = $intent->id;
 
 echo json_encode(array('client_secret' => $intent->client_secret));

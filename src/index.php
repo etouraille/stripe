@@ -28,7 +28,21 @@
         <button id="submit">Submit Payment</button>
     </form>
 </div>
+<div>
+    <button id="capture">capture</button>
+</div>
 <script type="text/javascript">
+    var capture = document.getElementById('capture');
+        capture.addEventListener('click', function(evt) {
+        var response = fetch('/capture.php').then(function (response) {
+            return response.json();
+        }).then(function (responseJson) {
+            console.log(responseJson);
+        });
+    });
+
+
+
 var stripe = Stripe('pk_test_51IFxhyIeSdECPKMuO7nyCyldB8hhiM8m2l9KeINPCuBpPdIi9OOKyY2y8KbUtYQd3NCFcjVKmS9smbSCUcbq4hWi00CMYKXvm1');
 let clientSecret
 var response = fetch('/secret.php').then(function(response) {
@@ -45,6 +59,7 @@ var style = {
         color: "#32325d",
     }
 };
+
 let card
     card = elements.create("card", { style: style });
     card.mount("#card-element");
@@ -74,6 +89,9 @@ form.addEventListener('submit', function(ev) {
         }
     });
 });
+
+/*
+*/
 </script>
 </body>
 
